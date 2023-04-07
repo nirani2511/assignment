@@ -44,7 +44,9 @@
 		<div>
 			<label class="label" for="operation">Choose an operation:</label>
 			<select class="input" id="operation">
-				<option value="square">Square</option>
+			
+				<option value="cube">Cube</option>
+			
 			</select>
 		</div>
 		<div>
@@ -56,19 +58,22 @@
 	</div>
 
 	<script>
+	
 
 		function calculate() {
 			const operation = document.getElementById("operation").value;
 			const number = document.getElementById("number").value;
 			let result;
 			
-			if (operation === "square") {
-				result = number * number;
-			} 
+			
+			if (operation === "cube") {
+				result = number * number * number;
+			
 			
 			
 			document.getElementById("result").innerHTML = `The ${operation} of ${number} is ${result}`;
 		}
+		
 		
 	</script>
 </body>
