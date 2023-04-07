@@ -1,8 +1,15 @@
-FROM node:alpine
+FROM nginx:latest
 
-WORKDIR /app
-COPY package.json .
-RUN npm install
-COPY metrics.html /
+# Copy the HTML content for the first container into the image
+COPY square /usr/share/nginx/html/square
+
+# Copy the HTML content for the second container into the image
+COPY cube /usr/share/nginx/html/cube
+
+# Copy the configuration files for the web server
+COPY square.conf /etc/nginx/conf.d/square.conf
+COPY cube.conf /etc/nginx/conf.d/cube.conf
+
+# Expose the ports that the web servers should listen on
 EXPOSE 8080
-CMD [ "node", "-e", "const http = require('http');const fs = require('fs');const server = http.createServer((req, res) => {if (req.url === '/') {fs.readFile('/metrics.html', (err, data) => {if (err) {res.writeHead(500);res.end('Error loading metrics.html');} else {res.writeHead(200, {'Content-Type': 'text/html'});res.end(data);}});} else {res.writeHead(404);res.end('Not Found');}});server.listen(8080);" ]
+EXPOSE 8081
