@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Operations</title>
+	<style>
+		.container {
+			margin: 20px;
+			padding: 20px;
+			border: 1px solid #ccc;
+			border-radius: 5px;
+			background-color: #f2f2f2;
+		}
+		.label {
+			display: inline-block;
+			width: 120px;
+			font-weight: bold;
+		}
+		.input {
+			padding: 5px;
+			border: 1px solid #ccc;
+			border-radius: 3px;
+			margin-bottom: 10px;
+			width: 200px;
+		}
+		.button {
+			padding: 5px 10px;
+			background-color: #4CAF50;
+			color: white;
+			border: none;
+			border-radius: 3px;
+			cursor: pointer;
+			margin-bottom: 10px;
+		}
+		.result {
+			font-size: 18px;
+			font-weight: bold;
+			margin-top: 20px;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<h1>Operations</h1>
+		<div>
+			<label class="label" for="operation">Choose an operation:</label>
+			<select class="input" id="operation">
+				<option value="square">Square</option>
+			</select>
+		</div>
+		<div>
+			<label class="label" for="number">Enter a number:</label>
+			<input class="input" type="number" id="number" name="number">
+		</div>
+		<button class="button" onclick="calculate()">Calculate</button>
+		<div id="result" class="result"></div>
+	</div>
+
+	<script>
+
+		function calculate() {
+			const operation = document.getElementById("operation").value;
+			const number = document.getElementById("number").value;
+			let result;
+			
+			if (operation === "square") {
+				result = number * number;
+			} 
+			
+			
+			document.getElementById("result").innerHTML = `The ${operation} of ${number} is ${result}`;
+		}
+		
+	</script>
+</body>
+</html>
